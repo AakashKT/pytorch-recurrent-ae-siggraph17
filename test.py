@@ -13,13 +13,15 @@ import numpy as np
 import torch, argparse, pdb
 
 from model import *
+from data import *
+from losses import *
 
 
 def load_checkpoint(filename):
 	chkpoint = torch.load(filename);
-	model = RCNN(8);
+	model = RecurrentAE(8);
 	model.to('cuda:0');
-	optimizer = torch.optim.Adam(model.parameters(), lr=0.001, betas=(0.9, 0.99))
+	optimizer = torch.optim.Adam(model.parameters(), lr=0.0001, betas=(0.9, 0.99))
 
 	epoch = chkpoint['epoch'];
 	model.load_state_dict(chkpoint['state_dict']);
@@ -43,7 +45,7 @@ if __name__ == '__main__':
 	width = size[0]
 	height = size[1]
 
-	data_loader = RCNNData('%s/test' % args.data_dir, size)
+	data_loader = RAEData('%s/test' % args.data_dir, size)
 	dataset = DataLoader(data_loader, batch_size=1, num_workers=0, shuffle=False)
 
 	for i, item in enumerate(dataset):
