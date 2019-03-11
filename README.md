@@ -38,7 +38,7 @@ Construct the input as one image, as follows : <br>
 </table>
 <br>
 <h3> Directory structure </h3>
-Make batches of batch size 7 of contunuous frames, and put them in a directory (seq_0, seq_1 ..). Do this for all frames.
+Make batches of batch size 7 of continuous frames, and put them in a directory (seq_0, seq_1 ..). Do this for all frames.
 Split the resulting directories into test and train.
 
 <b> Note : </b> The data directory must contain 'train' and 'test' directories, and these directories much contain directories where the sequence is stored.

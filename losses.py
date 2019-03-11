@@ -46,8 +46,8 @@ def get_temporal_data(output, target):
 	final_target.fill_(0)
 
 	for i in range(1, 7):
-		final_output[:, i, :, :, :] = output[:, i, :, :] + output[:, i-1, :, :]
-		final_target[:, i, :, :, :] = target[:, i, :, :] + target[:, i-1, :, :]
+		final_output[:, i, :, :, :] = output[:, i, :, :] - output[:, i-1, :, :]
+		final_target[:, i, :, :, :] = target[:, i, :, :] - target[:, i-1, :, :]
 
 	return final_output, final_target
 
